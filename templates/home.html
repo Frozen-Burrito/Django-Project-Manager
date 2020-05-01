@@ -1,0 +1,31 @@
+{% extends 'base_template.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .home {
+
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        text-align: center;
+    }
+</style>
+
+<img src="{% static 'img/home_backdrop.jpg'%}" alt="">
+
+<div class="home">
+    <h1>PLan. Create. Succeed.</h1>
+    
+    <h3>One place to organize your best projects</h3>
+    
+    <a class="waves-effect waves-light btn-large cyan lighten-2" href="{% url 'accounts:login' %}">Get Started</a>
+</div>
+    
+    
+{% endblock%}

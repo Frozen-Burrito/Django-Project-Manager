@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Register</title>
+
+</head>
+<body>
+
+    <style>
+
+        body {
+            background-color: rgb(245, 245, 245);
+        }
+
+        div.register-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 30%;
+        }
+
+        h2 {
+            margin: 0;
+            padding: 1rem 0 ;
+            width: 100%;
+            background-color: black;
+
+            border-radius: 5px 5px 0px 0px;
+
+            text-align: center;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        form {
+            padding: 2.5rem;
+            background-color: #fff;
+            border-radius: 0px 0px 5px 5px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            margin: 1rem 0;
+            border: 1px solid rgb(192, 192, 192);
+            border-radius: 5px;
+            padding: 0.4rem 1rem;
+            transition: .3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #17a2b8;
+        }
+
+    </style>
+    
+</body>
+</html>
+
+    <img style="max-width: 100%;" src="{% static 'img/home_backdrop.jpg'%}" alt="">
+    
+    <div class="register-form ">
+        <h2>Register</h2>
+    
+        <form method="POST" action="">
+    
+            {% csrf_token %}
+        
+            {% for field in form %}
+                {{field}}
+            {% endfor %}
+    
+        <input class="btn btn-info" type="submit" value="Create Account" />
+
+        {{ form.errors }}
+
+        <div>
+            Already have an account? <a href="{% url 'accounts:login' %}">Log In</a>
+        </div>
+    </div>
+
+    <script>
+        let formFields = document.getElementsByTagName('input');
+        formFields[1].placeholder = 'Username';
+        formFields[2].placeholder = 'Email';
+        formFields[3].placeholder = 'Password';
+        formFields[4].placeholder = 'Confirm Password';
+    </script>
+
+</form>

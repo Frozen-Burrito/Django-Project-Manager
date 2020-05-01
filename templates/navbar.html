@@ -1,0 +1,14 @@
+
+<!-- Navbar -->
+<div class="grey darken-4 z-depth-2">
+    <nav class="grey darken-4 z-depth-0">
+        <div class="nav-wrapper ">
+            <a href="{% url 'home' %}" class="brand-logo">Home</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="{% url 'projects:dashboard' %}" class="nav-link active"><i class="material-icons">dashboard</i></a></li>
+                <!-- <li><a href="#" class="nav-link"><i class="material-icons">settings</i></a></li> -->
+                <li><a href="{% url 'accounts:profile' %}" class="nav-link"><i class="material-icons">account_circle</i></a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
