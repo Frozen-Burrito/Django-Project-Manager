@@ -3,14 +3,31 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
-from .forms import UserSignupForm
+from .forms import UserSignupForm, AccountEditForm
 
 # Create your views here.
 
 def user_profile(request):
 
-    context = {} 
+    account = request.user.account
+    context = { 'account': account } 
     return render(request, 'profile.html', context)
+
+def user_profile_edit(request):
+
+    account = request.user.account
+    form = AccountEditForm( instance=account )
+
+    if request.method == 'POST':
+        form = AccountEditForm( request.POST, request.FILES, instance=account )
+
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:profile')
+
+    context = { 'account': account, 'form': form}
+
+    return render(request, 'profile_edit.html', context)
 
 def login_page(request):
 
@@ -49,3 +66,7 @@ def signup_page(request):
     context = { 'form': form } 
 
     return render(request, 'signup.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home') 

@@ -3,16 +3,81 @@
 {% load static %}
 
 {% block content %}
+
+<style>
+
+    .profile {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+
+        width: 100%;
+        height: 40vh;
+    }
+
+    .head {
+        margin: 3rem 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .user-info {
+        margin-left: 2rem;
+    }
     
-    <div class="container">
-        <div class="row">
-            <div class="col s3 grey lighten-5">
-                <h3>Username</h3>
+    .profile-pic {
+        max-width: 200px;
+    }
+
+    .username {
+        font-size: 2.4rem;
+    }
+
+    section {
+        padding: 2rem;
+    }
+
+</style>
+
+    <img src="{{ account.backdrop.url }}" alt="Background">
+    <!-- <img src="{% static 'img/home_backdrop.jpg'%}" alt=""> -->
+    
+    <div class="white profile">
+        <div class="container">
+            
+            <div class="head">
+                <div class="info">
+                    <img src="{{ account.profile_pic.url }}" class="circle profile-pic" alt="Profile picture"/>
+                    <div class="user-info">
+                        <span class="username">{{ account.username }}</span>
+                        <p>Joined {{ account.date_created }}</p>
+                    </div>
+                </div>
+
+                <a class="waves-effect waves-light btn cyan lighten-2" href="{% url 'accounts:profile-edit' %}">Edit Profile</a>
             </div>
 
-            <div class="col s9 red">
-                <h2>Account Settings</h2>
-            </div>
+            <section>
+                <h3>About</h3>
+                <p>{{ account.bio }}</p>
+            </section>
+
+            <section>
+                <h3>Projects</h3>
+            </section>
+
+            <section>
+                <h3>Contact</h3>
+                <a href="{{ account.site }}">{{ account.site }}</a>
+            </section>
         </div>
     </div>
 

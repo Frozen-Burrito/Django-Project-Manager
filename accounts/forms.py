@@ -16,3 +16,9 @@ class UserSignupForm (UserCreationForm):
             'password1',
             'password2',
         ]
+
+class AccountEditForm (ModelForm):
+    class Meta:
+        model = Account
+        fields = '__all__'
+        exclude = ['user', 'date_created']

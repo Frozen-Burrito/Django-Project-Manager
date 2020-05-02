@@ -24,7 +24,12 @@
     
     <h3>One place to organize your best projects</h3>
     
-    <a class="waves-effect waves-light btn-large cyan lighten-2" href="{% url 'accounts:login' %}">Get Started</a>
+    {% if user.is_authenticated %}
+        <a class="waves-effect waves-light btn-large cyan lighten-2" href="{% url 'projects:dashboard' %}">Create New Project</a>
+    {% else %}
+        <a class="waves-effect waves-light btn-large cyan lighten-2" href="{% url 'accounts:login' %}">Login</a>
+        <a class="waves-effect waves-light btn-large cyan lighten-2" href="{% url 'accounts:signup' %}">Sign Up</a>
+    {% endif %}
 </div>
     
     
